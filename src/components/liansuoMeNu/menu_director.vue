@@ -9,10 +9,10 @@
         <div >
           <el-form :inline="true" :model="formInline" class="demo-form-inline" style="text-align: left">
             <el-form-item >
-              <el-input v-model="formInline.user" placeholder="请输入门店老板名称"></el-input>
+              <el-input v-model="formInline.name" placeholder="请输入门店老板名称"></el-input>
             </el-form-item>
             <el-form-item style="width: 800px">
-              <el-button type="primary" icon="el-icon-search" @click="">查询</el-button>
+              <el-button type="primary" icon="el-icon-search" @click="findsearch">查询</el-button>
             </el-form-item>
             <!--<el-button type="warning" plain style="margin-right: 20px" @click="">添加</el-button>-->
           </el-form>
@@ -104,7 +104,7 @@
         },
         total:100,
         formInline: {
-          user: '',
+
         },
         tableData: [],
         dialog: false,
@@ -127,7 +127,14 @@
         this.params.page=val;
         this.findAll();
       },
-
+      findsearch:function(){
+          axios.post("http://localhost:7000/weichat-brand/director/findSearch",this.formInline).then(res=>{
+            if (res.data.code==200){
+              this.tableData=res.data.data;
+              this.total=res.data.total;
+            }
+          })
+      },
 
 
       handleClose(done) {

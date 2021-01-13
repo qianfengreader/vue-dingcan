@@ -26,24 +26,46 @@
           <el-input v-model="ruleForm.tel"></el-input>
         </el-form-item>
 
-        <el-form-item label="品牌logo" >
+        <!--<el-form-item label="品牌logo" >-->
 
+          <!--<el-upload-->
+            <!--class="avatar-uploader"-->
+            <!--action="http://localhost:7000/weichat-brand/brand/upload"-->
+            <!--:show-file-list="false"-->
+            <!--:on-success="handleAvatarSuccess"-->
+            <!--:before-upload="beforeAvatarUpload">-->
+            <!--<img  class="avatar">-->
+            <!--<i  class="el-icon-plus avatar-uploader-icon"></i>-->
+          <!--</el-upload>-->
+        <!--</el-form-item>-->
+        <!--<el-form-item >-->
+          <!--<el-image-->
+          <!--style="width: 100px; height: 100px"-->
+          <!--:src="ruleForm.pic"-->
+          <!--fit="fill" v-if="ruleForm.pic!=null && ruleForm.pic!=''"></el-image>-->
+        <!--</el-form-item>-->
+
+
+        <el-form-item label="图片">
+          <!--<el-input v-model="menu.pic"></el-input>-->
           <el-upload
             class="avatar-uploader"
             action="http://localhost:7000/weichat-brand/brand/upload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
-            <img  class="avatar">
-            <i  class="el-icon-plus avatar-uploader-icon"></i>
+            <!--<img  class="avatar">-->
+            <i  class="el-icon-plus avatar-uploader-icon" style="height: 50px "></i>
           </el-upload>
         </el-form-item>
-        <el-form-item >
+
+        <el-form-item label="图片显示">
           <el-image
-          style="width: 100px; height: 100px"
-          :src="ruleForm.pic"
-          fit="fill" v-if="ruleForm.pic!=null && ruleForm.pic!=''"></el-image>
+            style="width: 100px; height: 100px"
+            :src="ruleForm.pic"
+            fit="fill" v-if="ruleForm.pic!=null && ruleForm.pic!=''"></el-image>
         </el-form-item>
+
 
 
         <el-form-item >
