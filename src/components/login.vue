@@ -60,12 +60,12 @@
         })
       },
       login:function () {
-        axios.post("http://localhost:8087/user/login",{username:this.user.username,password:this.user.password}).then(res=>{
+        axios.post("api/weichat-user/user/login",{username:this.user.username,password:this.user.password}).then(res=>{
           if (res.data.code==200){
             //获取到用户的token 设置到cookie中
             this.$cookie.set("token",res.data.data)
             //跳转页面
-            this.$router.push("/managermain")
+            this.$router.push("/managermain/userList")
             alert(res.data.message)
           }else{
             alert(res.data.message)

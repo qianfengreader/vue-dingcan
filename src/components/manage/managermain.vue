@@ -49,6 +49,7 @@
                 <el-menu-item index="2-1" @click="toMeNu">菜单管理</el-menu-item>
                 <el-menu-item index="2-2" @click="touser">用户管理</el-menu-item>
                 <el-menu-item index="2-2" @click="tosousuo">评论管理</el-menu-item>
+                <el-menu-item index="2-2" @click="tolamp">轮播图管理</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
@@ -58,8 +59,10 @@
           <el-header style="text-align: right; font-size: 12px">
             <font style="margin-right: 250px;font-size: 40px">后台管理界面</font>
 
-            <font  v-if="user != null" style="font-size: 30px">欢迎您！{{user.username}} &nbsp;/</font>
-            <font @click="exitee" style="font-size: 30px">注销</font>
+            <font  v-if="user != null" style="font-size: 30px">欢迎您！
+              <font style="color: red;font-size: 40px">{{user}} </font>
+              &nbsp;/</font>
+            <font @click="exitee" style="font-size: 30px" >注销</font>
 
           </el-header>
 
@@ -77,30 +80,23 @@
   export default {
     data() {
       return{
-        user:{}
+        user:''
 
       }
     },
     methods:{
-      // getUser: function () {
-      //   axios.post('/api/user/findUserFromToken').then(res=>{
-      //     this.user = res.data.data;
-      //   })
-      // },
+      getUser: function () {
+        axios.post('api/weichat-user/user/findUserFromToken').then(res=>{
+          this.user = res.data.data;
+        })
+      },
       exitee: function () {
-        axios.post('api/manager/exit').then(res => {
-          if (res.data.code == 200) {
+        axios.post('api/weichat-user/user/exit').then(res => {
             this.$cookie.set("token", "");
             alert(res.data.message);
             this.$router.push("/");
-          } else if (res.data.code == 201) {
-            this.$cookie.set("JSESSIONID", "");
-            alert(res.data.message);
-            this.$router.push("/manager");
-          } else {
-            alert("注销失败")
-          }
         })
+
       },
       bookmain:function () {
         this.$router.push({
@@ -156,6 +152,12 @@
           name:"comment",
         })
       },
+      tolamp:function(){
+        this.$router.push({
+          path:"/managermain/manage_lamp",
+          name:"manage_lamp",
+        })
+      },
       toliansuodian:function () {
         this.$router.push({
           path:"/menu/menu_brand",
@@ -164,7 +166,7 @@
       },
     },
     mounted(){
-      // this.getUser()
+      this.getUser()
 
     }
   };

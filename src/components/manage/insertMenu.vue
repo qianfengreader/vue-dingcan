@@ -69,7 +69,7 @@
         },
         methods:{
           getCatalog:function () {
-            axios.get("http://localhost:7000/weichat-menu/catalog/findAll").then(res=>{
+            axios.get("api/weichat-menu/catalog/findAll").then(res=>{
               if (res.data.code == 200) {
                 //alert(res.data.data);
                 //console.log(res.data.data);
@@ -80,13 +80,13 @@
             })
           },
           insertMenu:function () {
-            axios.post("http://localhost:7000/weichat-menu/menu/insertMenu",this.menu).then(res=>{
+            axios.post("api/weichat-menu/menu/insertMenu",this.menu).then(res=>{
               if (res.data.code == 200) {
                 alert("添加成功")
-                this.$router.push("/menu")
+                this.$router.push("/managermain/manage_menu")
               } else {
                 alert("添加失败")
-                this.$router.push("/menu")
+                this.$router.push("/managermain/manage_menu")
               }
             })
           },

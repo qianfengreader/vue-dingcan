@@ -57,8 +57,7 @@
       },
       methods:{
         tongguo:function (id) {
-          alert(id)
-          axios.post("api/adminPaihao/ruzhuo",{id:id}).then(res=>{
+          axios.post("api/weichat-zilongdingcan/adminPaihao/ruzhuo",{id:id}).then(res=>{
             if (res.data.code == 200) {
               alert(res.data.msg)
               this.findAll();
@@ -66,7 +65,7 @@
           })
         },
         findAll:function () {
-          axios.get("api/adminPaihao/findAll").then(res=>{
+          axios.get("api/weichat-zilongdingcan/adminPaihao/findAll").then(res=>{
             if (res.data.code == 200) {
               this.paihaolist=res.data.data
             }

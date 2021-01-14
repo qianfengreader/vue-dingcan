@@ -27,9 +27,9 @@
       },
       methods:{
         submitUser:function () {
-            axios.post("http://localhost:7000/weichat-user/user/updateById",this.user).then(res=>{
+            axios.post("api/weichat-user/user/updateById",this.user).then(res=>{
                 alert(res.data.message)
-                this.$router.push("userList")
+                this.$router.push("/managermain/userList")
             })
         }
       },

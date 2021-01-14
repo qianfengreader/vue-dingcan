@@ -19,13 +19,13 @@
       prop="createtime"
       label="创建时间"
       sortable
-      width="200">
+      width="150">
     </el-table-column>
     <el-table-column
       prop="updatetime"
       label="修改时间"
       sortable
-      width="200">
+      width="150">
     </el-table-column>
     <el-table-column
       prop="type"
@@ -34,7 +34,7 @@
     </el-table-column>
     <el-table-column
       label="修改"
-      width="200">
+      width="150">
       <template slot-scope="scope">
       <el-button type="primary" icon="el-icon-edit" circle @click="updateById(scope.row)"></el-button>
       </template>
@@ -61,7 +61,7 @@
       },
       methods:{
           findAll:function () {
-            axios.post("api/user/findAll").then(res=>{
+            axios.post("api/weichat-user/user/findAll").then(res=>{
               if (res.data.code==200){
                 this.user=res.data.data;
                 alert(res.data.message)
@@ -74,7 +74,7 @@
           this.$router.push({name:"updateUser",params:user})
         },
         deleteById:function (id) {
-          axios.post("http://localhost:7000/weichat-user/user/deleteById",{id:id}).then(res=>{
+          axios.post("api/weichat-user/user/deleteById",{id:id}).then(res=>{
             if (res.data.code==200){
               alert(res.data.message)
               this.findAll();

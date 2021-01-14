@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin: auto">
       <!--为图表准备一个大小合适的区域-->
       <div id="main" style="width: 600px;height:400px;"></div>
     </div>
@@ -15,7 +15,7 @@
         },
       methods:{
         getTypeCount:function () {
-          axios.post("http://localhost:7000/weichat-menu/menu/typenameCount").then(res=>{
+          axios.post("api/weichat-menu/menu/typenameCount").then(res=>{
             if (res.data.code == 200) {
               //alert(res.data.data);
               this.typeCount = res.data.data;

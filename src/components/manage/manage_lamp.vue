@@ -48,18 +48,18 @@
         <el-table-column
           prop="createtime"
           label="创建时间"
-          width="180">
+          width="300">
         </el-table-column>
 
-        <el-table-column
-          prop="info"
-          label="图片描述"
-          width="180">
-        </el-table-column>
+        <!--<el-table-column-->
+          <!--prop="info"-->
+          <!--label="图片描述"-->
+          <!--width="180">-->
+        <!--</el-table-column>-->
 
         <el-table-column
           label="图片显示"
-          width="200">
+          width="300">
           <template slot-scope="scope">
             <img  :src="scope.row.url"  style="width: 150px;height: 100px">
           </template>
@@ -86,9 +86,9 @@
         <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
           <el-form >
 
-            <el-form-item label="图片描述" :label-width="formLabelWidth">
-              <el-input v-model="form.info" autocomplete="off"></el-input>
-            </el-form-item>
+            <!--<el-form-item label="图片描述" :label-width="formLabelWidth">-->
+              <!--<el-input v-model="form.info" autocomplete="off"></el-input>-->
+            <!--</el-form-item>-->
             <el-form-item label="图片链接" :label-width="formLabelWidth">
               <el-input v-model="form.url" autocomplete="off"></el-input>
             </el-form-item>
@@ -165,7 +165,7 @@
       },
       deletelamp:function (id) {
         alert(id)
-        axios.post("api/lamp/deleteLamp",{id:id}).then(res=>{
+        axios.post("api/weichat-zilongdingcan/lamp/deleteLamp",{id:id}).then(res=>{
           if (res.data.code == 200) {
             alert(res.data.message)
             this.findAll();
@@ -173,7 +173,7 @@
         })
       },
       findByIdLamp:function(id){
-        axios.post("api/lamp/findByIdLamp",{id:id}).then(res=>{
+        axios.post("api/weichat-zilongdingcan/lamp/findByIdLamp",{id:id}).then(res=>{
           if (res.data.code == 200) {
             this.form = res.data.data;
           }
@@ -181,7 +181,7 @@
       },
       saveAndFlushToXiuGai: function (id) {/*修改或者新增   模态框点击 确定*/
         this.dialogFormVisible = false
-        axios.post("api/lamp/saveAndFlush", this.form).then(res => {
+        axios.post("api/weichat-zilongdingcan/lamp/saveAndFlush", this.form).then(res => {
           if (res.data.code == 201) {
             alert(res.data.message)
           }
@@ -194,7 +194,7 @@
       },
 
       findAll:function () {
-        axios.get("api/lamp/findAll").then(res=>{
+        axios.get("api/weichat-zilongdingcan/lamp/findAll").then(res=>{
           if (res.data.code == 200) {
             this.lamplist=res.data.data
           }

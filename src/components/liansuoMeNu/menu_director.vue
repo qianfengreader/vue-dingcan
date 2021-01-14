@@ -98,7 +98,7 @@
     data() {
       return {
         params:{
-          size:1,
+          size:2,
           page:1,
           pageSizes:[1,2,3,4]
         },
@@ -128,7 +128,7 @@
         this.findAll();
       },
       findsearch:function(){
-          axios.post("http://localhost:7000/weichat-brand/director/findSearch",this.formInline).then(res=>{
+          axios.post("api/weichat-brand/director/findSearch",this.formInline).then(res=>{
             if (res.data.code==200){
               this.tableData=res.data.data;
               this.total=res.data.total;
@@ -145,7 +145,7 @@
           .then(_ => {
 
             this.loading = true;
-            axios.post("http://localhost:7000/weichat-brand/director/updateDir",this.form).then(res=>{
+            axios.post("api/weichat-brand/director/updateDir",this.form).then(res=>{
               if (res.data.code==200){
                 this.timer = setTimeout(() => {
 
@@ -174,7 +174,7 @@
       },
 
       findByName:function(name){
-        axios.post("http://localhost:7000/weichat-brand/director/findByName",{name:name}).then(res=>{
+        axios.post("api/weichat-brand/director/findByName",{name:name}).then(res=>{
           if (res.data.code==200){
             this.form=res.data.data;
           }
@@ -186,7 +186,7 @@
       },
 
       findAll:function () {
-        axios.get("http://localhost:7000/weichat-brand/director/findAll/"+this.params.page+"/"+this.params.size).then(res=>{
+        axios.get("api/weichat-brand/director/findAll/"+this.params.page+"/"+this.params.size).then(res=>{
           if (res.data.code==200){
             this.tableData=res.data.data;
             this.total=res.data.total;

@@ -21,20 +21,23 @@
         <el-table-column
           prop="avatarurl"
           label="用户头像"
-          width="180">
+          width="250">
         </el-table-column>
 
         <el-table-column
-          prop="username"
+          label="图片显示"
+          width="200">
+          <template slot-scope="scope">
+            <img  :src="scope.row.avatarurl"  style="width: 100px;height: 100px">
+          </template>
+        </el-table-column>
+
+        <el-table-column
+          prop="name"
           label="用户名"
           width="180">
         </el-table-column>
 
-        <el-table-column
-          prop="utel"
-          label="手机号"
-          width="180">
-        </el-table-column>
 
         <el-table-column
           prop="info"
@@ -42,23 +45,6 @@
           width="180">
         </el-table-column>
 
-        <el-table-column
-          prop="createtime"
-          label="评论时间"
-          width="180">
-        </el-table-column>
-
-        <el-table-column
-          prop="mid"
-          label="菜品编号"
-          width="100">
-        </el-table-column>
-
-        <el-table-column
-          prop="score"
-          label="菜品得分"
-          width="100">
-        </el-table-column>
 
         <el-table-column
           prop="openid"
@@ -107,6 +93,8 @@
         total:1,
         page:1,
         size:4,
+        //avatarurl: '',
+        formLabelWidth: '120px'
       }
     },
     methods:{
@@ -121,7 +109,7 @@
 
 
       findAllComment:function () {
-        axios.post("http://localhost:7000/weichat-comments/findAllComments?page="+this.page+"&size="+this.size).then(res=>{
+        axios.post("api/weichat-comments/findAllComments?page="+this.page+"&size="+this.size).then(res=>{
           console.log(res.data.data)
           if (res.data.code==200){
             this.tableData=res.data.data;
@@ -134,7 +122,7 @@
       },
 
       handleClick:function (id) {
-        axios.post("http://localhost:7000/weichat-comments/deleteCommentsByMid",{"id":id}).then(res=>{
+        axios.post("api/weichat-comments/deleteCommentsByMid",{"id":id}).then(res=>{
           if (res.data.code==200){
             const h = this.$createElement;
             this.$message({

@@ -136,7 +136,7 @@
 
 
       handleClick:function (id) {
-        axios.post("http://localhost:7000/weichat-comments/deleteCommentsByMid",{"id":id}).then(res=>{
+        axios.post("api/weichat-comments/deleteCommentsByMid",{"id":id}).then(res=>{
           if (res.data.code==200){
             const h = this.$createElement;
             this.$message({

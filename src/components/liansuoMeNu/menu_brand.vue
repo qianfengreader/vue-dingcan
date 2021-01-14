@@ -37,7 +37,7 @@
       },
       methods:{
         findAll:function () {
-          axios.get("http://localhost:7000/weichat-brand/brand/findAll").then(res=>{
+          axios.get("api/weichat-brand/brand/findAll").then(res=>{
             if (res.data.code==200){
               this.foods=res.data.data;
               this.pic=res.data.data.pic;

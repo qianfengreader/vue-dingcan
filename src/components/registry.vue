@@ -72,7 +72,7 @@
       })
     },
     registry:function () {
-      axios.post("http://localhost:7000/weichat-user/user/registry",this.user).then(res=>{
+      axios.post("api/weichat-user/user/registry",this.user).then(res=>{
         if (res.data.code==200){
           alert(res.data.message)
          this.$router.push("/")

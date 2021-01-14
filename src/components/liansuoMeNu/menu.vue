@@ -9,6 +9,7 @@
               <el-menu-item index="1-1" @click="pingpai">品牌管理</el-menu-item>
               <el-menu-item index="1-2" @click="mendian">门店管理</el-menu-item>
               <el-menu-item index="1-2" @click="director">店长管理</el-menu-item>
+              <el-menu-item index="1-2" @click="returnmain">返回</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -50,6 +51,12 @@
           name:"menu_director",
         })
       },
+      returnmain:function () {
+        this.$router.push({
+          path:"/managermain/pictureTable",
+          name:"pictureTable",
+        })
+      }
     },
   };
 </script>

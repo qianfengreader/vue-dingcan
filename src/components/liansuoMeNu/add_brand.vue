@@ -50,7 +50,7 @@
           <!--<el-input v-model="menu.pic"></el-input>-->
           <el-upload
             class="avatar-uploader"
-            action="http://localhost:7000/weichat-brand/brand/upload"
+            action="api/weichat-brand/brand/upload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -105,7 +105,7 @@
     },
     methods: {
       submitForm:function(){
-        axios.post("http://localhost:7000/weichat-brand/brand/addbrand",this.ruleForm).then(res=>{
+        axios.post("api/weichat-brand/brand/addbrand",this.ruleForm).then(res=>{
           if (res.data.code==200){
             this.$router.push("/menu/menu_brand")
           }

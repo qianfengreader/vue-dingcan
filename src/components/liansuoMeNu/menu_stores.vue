@@ -137,7 +137,7 @@
           .then(_ => {
 
             this.loading = true;
-            axios.post("http://localhost:7000/weichat-shop/shop/updateShop",this.form).then(res=>{
+            axios.post("api/weichat-shop/shop/updateShop",this.form).then(res=>{
               if (res.data.code==200){
                 this.timer = setTimeout(() => {
                   done();
@@ -162,7 +162,7 @@
       },
 
       findByName:function(name){
-          axios.post("http://localhost:7000/weichat-shop/shop/findByName",{name:name}).then(res=>{
+          axios.post("api/weichat-shop/shop/findByName",{name:name}).then(res=>{
             if (res.data.code==200){
                 this.form=res.data.data;
             }
@@ -170,7 +170,7 @@
       },
 
       findBySearch:function(){
-        axios.post("http://localhost:7000/weichat-shop/shop/findSearch",this.formInline).then(res=>{
+        axios.post("api/weichat-shop/shop/findSearch",this.formInline).then(res=>{
           if (res.data.code==200){
             this.tableData=res.data.data;
           }
@@ -180,7 +180,7 @@
 
       },
       updatestate:function(name,state){
-          axios.post("http://localhost:7000/weichat-shop/shop/updatestate",{name:name,state:state}).then(res=>{
+          axios.post("api/weichat-shop/shop/updatestate",{name:name,state:state}).then(res=>{
             if (res.data.code==200){
               this.findAll();
             }
@@ -188,7 +188,7 @@
       },
       deleteByName:function(name){
           if (confirm("确定删除?")) {
-            axios.post("http://localhost:7000/weichat-shop/shop/deleteByName",{name:name}).then(res=>{
+            axios.post("api/weichat-shop/shop/deleteByName",{name:name}).then(res=>{
               if (res.data.code == 200) {
                 this.findAll();
               }
@@ -199,7 +199,7 @@
 
       },
       findAll:function () {
-        axios.get("http://localhost:7000/weichat-shop/shop/findAll").then(res=>{
+        axios.get("api/weichat-shop/shop/findAll").then(res=>{
           if (res.data.code==200){
             this.tableData=res.data.data;
           }

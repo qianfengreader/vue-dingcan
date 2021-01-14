@@ -21,7 +21,7 @@
           <!--<el-input v-model="menu.pic"></el-input>-->
           <el-upload
             class="avatar-uploader"
-            action="http://localhost:8888/weichat-menu/menu/upload"
+            action="api/weichat-menu/menu/upload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -74,7 +74,7 @@
         },
         methods:{
           getCatalog:function () {
-            axios.get("http://localhost:7000/weichat-menu/catalog/findAll").then(res=>{
+            axios.get("api/weichat-menu/catalog/findAll").then(res=>{
               if (res.data.code == 200) {
                 //alert(res.data.data)
                 this.catalog = res.data.data;
@@ -84,7 +84,7 @@
             })
           },
           findById:function () {
-            axios.post("http://localhost:7000/weichat-menu/menu/findById?id="+this.id).then(res=>{
+            axios.post("api/weichat-menu/menu/findById?id="+this.id).then(res=>{
               //alert(this.id)
               if (res.data.code == 200) {
                 alert("获取信息成功");
@@ -95,10 +95,10 @@
             })
           },
           updateMenu:function () {
-            axios.post("http://localhost:8888/weichat-menu/menu/updateMenu",this.menu).then(res=>{
+            axios.post("api/weichat-menu/menu/updateMenu",this.menu).then(res=>{
               if (res.data.code == 200) {
                 alert("修改成功");
-                this.$router.push("/menu")
+                this.$router.push("/managermain/manage_menu")
               }else{
                 alert("没有权限");
               }
