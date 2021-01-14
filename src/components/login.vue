@@ -60,7 +60,7 @@
         })
       },
       login:function () {
-        axios.post("/api/user/login",{username:this.user.username,password:this.user.password}).then(res=>{
+        axios.post("http://localhost:8087/user/login",{username:this.user.username,password:this.user.password}).then(res=>{
           if (res.data.code==200){
             //获取到用户的token 设置到cookie中
             this.$cookie.set("token",res.data.data)

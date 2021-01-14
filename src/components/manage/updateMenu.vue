@@ -74,7 +74,7 @@
         },
         methods:{
           getCatalog:function () {
-            axios.get("http://localhost:8888/weichat-menu/catalog/findAll").then(res=>{
+            axios.get("http://localhost:7000/weichat-menu/catalog/findAll").then(res=>{
               if (res.data.code == 200) {
                 //alert(res.data.data)
                 this.catalog = res.data.data;
@@ -84,7 +84,7 @@
             })
           },
           findById:function () {
-            axios.post("http://localhost:8888/weichat-menu/menu/findById?id="+this.id).then(res=>{
+            axios.post("http://localhost:7000/weichat-menu/menu/findById?id="+this.id).then(res=>{
               //alert(this.id)
               if (res.data.code == 200) {
                 alert("获取信息成功");

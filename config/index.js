@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       '/api':{
         //设置域名和端口号
-        target:'http://localhost:8887/',
+        target:'http://localhost:9000/',
         //允许跨域
         changeOrigin:true,
         //返回更改

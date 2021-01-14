@@ -112,7 +112,7 @@
     methods:{
       findAll:function () {
         console.log(this.param)
-        axios.post("http://localhost:8888/weichat-menu/menu/findAll",this.param).then(res=>{
+        axios.post("http://localhost:7000/weichat-menu/menu/findAll",this.param).then(res=>{
           if (res.data.code == 200) {
             //alert(res.data.data);
             this.tableData = res.data.data;
@@ -124,7 +124,7 @@
         })
       },
       searchFindAll:function(){
-        axios.post("http://localhost:8888/weichat-search/search/findAll").then(res=>{
+        axios.post("http://localhost:7000/weichat-search/search/findAll").then(res=>{
           alert("正在ES查询");
           if (res.data.code==200){
             alert("查询成功"+res.data.data);
@@ -147,7 +147,7 @@
         })
       },
       deleteMenuOne:function(id) {
-        axios.post("http://localhost:8888/weichat-menu/menu/deleteMenuOne?id="+id).then(res=>{
+        axios.post("http://localhost:7000/weichat-menu/menu/deleteMenuOne?id="+id).then(res=>{
           //alert("删除ids")
           if (res.data.code == 200) {
             alert("删除成功");
@@ -165,7 +165,7 @@
           if (ids == null || ids.length == 0) {
             alert("请选择所要删除")
           } else {
-            axios.post("http://localhost:8888/weichat-menu/menu/deleteMenu",{ids:ids}).then(res=>{
+            axios.post("http://localhost:7000/weichat-menu/menu/deleteMenu",{ids:ids}).then(res=>{
               //alert("删除")
               if (res.data.code == 200) {
                 alert("删除成功");
@@ -207,8 +207,8 @@
       }
     },
     mounted(){
-      //this.findAll();
-      this.searchFindAll()
+      this.findAll();
+      // this.searchFindAll()
     }
   }
 </script>

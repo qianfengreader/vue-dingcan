@@ -18,7 +18,7 @@
           <!--<el-input v-model="menu.pic"></el-input>-->
           <el-upload
             class="avatar-uploader"
-            action="http://localhost:8888/weichat-menu/menu/upload"
+            action="api/weichat-menu/menu/upload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -69,9 +69,9 @@
         },
         methods:{
           getCatalog:function () {
-            axios.get("http://localhost:8888/weichat-menu/catalog/findAll").then(res=>{
+            axios.get("http://localhost:7000/weichat-menu/catalog/findAll").then(res=>{
               if (res.data.code == 200) {
-                alert(res.data.data);
+                //alert(res.data.data);
                 //console.log(res.data.data);
                 this.catalog = res.data.data;
               } else{
@@ -80,7 +80,7 @@
             })
           },
           insertMenu:function () {
-            axios.post("http://localhost:8888/weichat-menu/menu/insertMenu",this.menu).then(res=>{
+            axios.post("http://localhost:7000/weichat-menu/menu/insertMenu",this.menu).then(res=>{
               if (res.data.code == 200) {
                 alert("添加成功")
                 this.$router.push("/menu")

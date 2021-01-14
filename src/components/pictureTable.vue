@@ -15,9 +15,9 @@
         },
       methods:{
         getTypeCount:function () {
-          axios.post("http://localhost:8888/weichat-menu/menu/typenameCount").then(res=>{
+          axios.post("http://localhost:7000/weichat-menu/menu/typenameCount").then(res=>{
             if (res.data.code == 200) {
-              alert(res.data.data);
+              //alert(res.data.data);
               this.typeCount = res.data.data;
               this.createTable();
             } else {
