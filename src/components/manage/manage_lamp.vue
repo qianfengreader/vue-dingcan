@@ -98,7 +98,7 @@
               <!--<el-input v-model="form.btime" autocomplete="off"></el-input>-->
               <el-upload
                 class="avatar-uploader"
-                action="api/lamp/upload"
+                action="api/weichat-zilongdingcan/lamp/upload"
                 :show-file-list="false"
                 :on-success="handleAvatarSuccess"
                 :before-upload="beforeAvatarUpload">

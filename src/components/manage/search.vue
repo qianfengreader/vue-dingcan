@@ -20,28 +20,22 @@
         <el-table-column
           prop="avatarurl"
           label="用户头像"
-          width="180">
+          width="250">
         </el-table-column>
 
         <el-table-column
-          prop="username"
+          label="图片显示"
+          width="200">
+          <template slot-scope="scope">
+            <img  :src="scope.row.avatarurl"  style="width: 100px;height: 100px">
+          </template>
+        </el-table-column>
+
+        <el-table-column
+          prop="name"
           label="用户名"
           width="180">
-          <template slot-scope="scope">
-            <p v-html='scope.row.username'></p>
-          </template>
         </el-table-column>
-
-        <el-table-column
-          prop="utel"
-          label="手机号"
-          width="180">
-          <template slot-scope="scope">
-            <p v-html='scope.row.utel'></p>
-          </template>
-        </el-table-column>
-
-
 
         <el-table-column
           prop="info"
@@ -52,32 +46,11 @@
           </template>
         </el-table-column>
 
-        <el-table-column
-          prop="createtime"
-          label="评论时间"
-          width="180">
-        </el-table-column>
-
-
-        <el-table-column
-          prop="mid"
-          label="菜品编号"
-          width="100">
-        </el-table-column>
-
-        <el-table-column
-          prop="score"
-          label="菜品得分"
-          width="100">
-        </el-table-column>
 
         <el-table-column
           prop="openid"
           label="用户标识"
           width="180">
-          <template slot-scope="scope">
-            <p v-html="scope.row.openid"></p>
-          </template>
         </el-table-column>
 
         <el-table-column
